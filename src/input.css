@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
+
+  @keyframes move-around {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(10px, -10px) scale(1.1); }
+    50% { transform: translate(-10px, 10px) scale(1.1); }
+    75% { transform: translate(8px, 8px) scale(1.05); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+
+  .hover-move-around:hover {
+    animation: move-around 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes spin-fast {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(720deg) scale(1.2); } /* spins twice while scaling up */
+    100% { transform: rotate(1440deg) scale(1); } /* spins four times total */
+  }
+
+  .hover-spin-fast:hover {
+    animation: spin-fast 0.8s linear infinite;
+  }
+
+  @keyframes jump {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-20px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    70% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .hover-jump:hover {
+    animation: jump 0.6s ease-in-out;
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  .hover-fade-out:hover {
+    animation: fade-out 0.5s ease-in forwards;
+  }
+}
+
